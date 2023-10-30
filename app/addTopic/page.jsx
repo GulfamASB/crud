@@ -1,7 +1,6 @@
 "use client"
 import Link from 'next/link'
 import {useState} from 'react'
-import {parseCookies} from 'nookies'
 const Create = ()=>{
    const [name,setName] = useState("")
    const [price,setPrice] = useState("")
@@ -75,24 +74,11 @@ const Create = ()=>{
             <i className="material-icons right">send</i>
           </button>
      </form>
-    )
-  }
+    );
+  };
   
 
 
-  export async function getServerSideProps(ctx){
-    const cookie = parseCookies(ctx)
-     const user =  cookie.user ? JSON.parse(cookie.user) : ""
-    if(user.role == 'user' || user.role == '' ){
-        const {res} = ctx
-        res.writeHead(302,{Location:"/"})
-        res.end()
-    }
   
-  
-    return {
-        props:{}
-    }
-  }
   
   export default Create
