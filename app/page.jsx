@@ -15,7 +15,7 @@ const getTopics = async () => {
 };
 
 export default async function TopicsList() {
-  const { topics } = await getTopics();
+  const { topics } = undefined ||  await getTopics() ;
   console.log(topics)
   return (
     <>
